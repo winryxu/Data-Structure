@@ -1,0 +1,24 @@
+Grading r47762 by wxu41 committed on Thu Apr 20 13:35:49 CDT 2017
+Monad Autograder
+Testing mp7.1 at 2017-04-22 00:37:23
+
+"@return A voidean value indicating whether the test was successful." ~ lab_avl
+
+Setting up test environment...
+Compiling...
+================================================================
+
+
+Running tests...
+================================================================
+addElements1 . . . . [20 pts] - passed
+addElements2 . . . . [20 pts] - passed
+testFindAndSetUnion1 [20 pts] - passed
+testFindAndSetUnion2 [20 pts] - passed
+testFindAndSetUnion3 [20 pts] - passed
+
+
+Total score...
+================================================================
+TOTAL SCORE: 100
+
