@@ -1,0 +1,50 @@
+#include <cstdint>
+
+#include "image.h"
+#include "png.h"
+
+void Image::flipleft(){
+  RGBAPixel px;
+  for (size_t xi=0; xi<(this->width()/2);xi++){
+    for (size_t yi=0;yi<this->height();yi++){
+	px = *(this->operator()(xi,yi));
+	int w=this->width();
+	*(this->operator()(xi,yi))=*(this->operator()(w-xi-1,yi));
+	*(this->operator()(w-xi-1,yi))=px;
+  }
+  }
+}
+
+
+
+
+void Image::adjustbrightness(int r,int g, int b){
+  for (size_t xi=0; xi<this->width();xi++){
+    for (size_t yi=0;yi<this->height();yi++){
+      int red = this->operator()(xi,yi)->red;
+      int green = this->operator()(xi,yi)->green;
+      int blue = this->operator()(xi,yi)->blue;
+      if (red+r>255){
+        this->operator()(xi,yi)->red=255;
+      }
+      else if (red+r<0) this->operator()(xi,yi)->red=0;
+      else this->operator()(xi,yi)->red+=r;
+      if (green+g>255) this->operator()(xi,yi)->green=255;
+      else if (green+g<0) this->operator()(xi,yi)->green=0;
+      else this->operator()(xi,yi)->green+=g;
+      if (blue+b>255) this->operator()(xi,yi)->blue=255;
+      else if (blue+b<0) this->operator()(xi,yi)->blue=0;
+      else this->operator()(xi,yi)->blue+=b;
+    }
+    }
+}
+
+void Image::invertcolors(){
+  for (size_t xi=0; xi<this->width();xi++){
+    for (size_t yi=0;yi<this->height();yi++){
+      this->operator()(xi,yi)->red=255-this->operator()(xi,yi)->red;
+      this->operator()(xi,yi)->green=255-this->operator()(xi,yi)->green;
+      this->operator()(xi,yi)->blue=255-this->operator()(xi,yi)->blue;
+    }
+  }
+}
